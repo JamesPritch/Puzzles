@@ -34,6 +34,31 @@ Andrew and Barbara open boxes with random prizes in, one by row and one by colum
 </ul>
 
 Combined Environmental Sensor Output example:
+<table>
+  <tr>
+    <th>Timestamp</th>
+    <th>Temperature (°C)</th>
+    <th>Humidity (%)</th>
+    <th>Pressure (hPa)</th>
+    <th>AirQuality (Index)</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    <td>Germany</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+    <td>Germany</td>
+    <td>Germany</td>
+  </tr>
+</table>
+
+
 Timestamp
 Temperature (°C)
 Humidity (%)
