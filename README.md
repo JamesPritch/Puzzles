@@ -43,52 +43,41 @@ Combined Environmental Sensor Output example:
     <th>AirQuality (Index)</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
+    <td>2025-11-10 09:00:00</td>
+    <td>22.5</td>
+    <td>45.2</td>
+    <td>1013.2</td>
+    <td>12</td>
   </tr>
   <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-    <td>Germany</td>
-    <td>Germany</td>
+    <td>2025-11-10 09:00:01</td>
+    <td>22.6</td>
+    <td>45.1</td>
+    <td>1013.1</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>2025-11-10 09:00:02</td>
+    <td>22.7</td>
+    <td>45.3</td>
+    <td>1013.0</td>
+    <td>13</td>
+  </tr>
+  <tr>
+    <td>2025-11-10 09:00:03</td>
+    <td>22.8</td>
+    <td>45.5</td>
+    <td>1012.9</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>2025-11-10 09:00:04</td>
+    <td>22.6</td>
+    <td>45.4</td>
+    <td>1012.8</td>
+    <td>15</td>
   </tr>
 </table>
-
-
-Timestamp
-Temperature (°C)
-Humidity (%)
-Pressure (hPa)
-AirQuality (Index)
-2025-11-10 09:00:00
-22.5
-45.2
-1013.2
-12
-2025-11-10 09:00:01
-22.6
-45.1
-1013.1
-14
-2025-11-10 09:00:02
-22.7
-45.3
-1013.0
-13
-2025-11-10 09:00:03
-22.8
-45.5
-1012.9
-16
-2025-11-10 09:00:04
-22.6
-45.4
-1012.8
-15
  
 There will be very likely some details that are not defined or missing - feel free to define them yourself. For example out frequency does the sensor output data into the file – you decide.
 DTC is only interested to review the coding style and really looking at software requirements.
