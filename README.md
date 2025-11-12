@@ -18,16 +18,20 @@ Andrew and Barbara open boxes with random prizes in, one by row and one by colum
 </ul>
 
 <b>Skills demonstrated</b>:
-General-purpose programming and problem-solving
-Working with data acquisition and logging workflows
-Software modularity and maintainability
-Visualization and basic data analysis concepts
-Understanding of processes relevant to embedded and real-time systems
+<ul>
+ <li>General-purpose programming and problem-solving</li>
+ <li>Working with data acquisition and logging workflows</li>
+ <li>Software modularity and maintainability</li>
+ <li>Visualization and basic data analysis concepts</li>
+ <li>Understanding of processes relevant to embedded and real-time systems</li>
+</ul>
 
 <b>Assumptions</b>:
-Sensor readings are saved in a text or CSV file.
-The program periodically reads this file to process or visualize data.
-Useful for testing and simulation when no physical hardware is connected.
+<ul>
+ <li>Sensor readings are saved in a text or CSV file.</li>
+ <li>The program periodically reads this file to process or visualize data.</li>
+ <li>Useful for testing and simulation when no physical hardware is connected.</li>
+</ul>
 
 Combined Environmental Sensor Output example:
 Timestamp
