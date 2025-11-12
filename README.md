@@ -7,8 +7,7 @@ This is a collection of simple puzzles that I want to check mechanically.
 Andrew and Barbara open boxes with random prizes in, one by row and one by column. Who is more likely to find a prize first?
 
 # 12.11.25 DTC Software Application Task.
-Task:
-Develop a small software application to collect, store, and display real-time readings from a simulated sensor system.
+<b>Task</b>: Develop a small software application to collect, store, and display real-time readings from a simulated sensor system.
 
 Details:
 Designed and implemented a module to generate or capture live data readings from a virtual sensor source.
