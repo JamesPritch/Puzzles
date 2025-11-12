@@ -9,18 +9,20 @@ Andrew and Barbara open boxes with random prizes in, one by row and one by colum
 # 12.11.25 DTC Software Application Task.
 <b>Task</b>: Develop a small software application to collect, store, and display real-time readings from a simulated sensor system.
 
-Details:
+<b>Details</b>:
 Designed and implemented a module to generate or capture live data readings from a virtual sensor source.
 Build a logging component to store readings in a structured file format for later analysis.
 Create a visualization module to plot the data over time and highlight any anomalies or threshold events.
 Focus on clean code structure, modular design, and clear documentation to make the tool easy to extend to physical hardware inputs.
-Skills demonstrated:
+
+<b>Skills demonstrated</b>:
 General-purpose programming and problem-solving
 Working with data acquisition and logging workflows
 Software modularity and maintainability
 Visualization and basic data analysis concepts
 Understanding of processes relevant to embedded and real-time systems
-Assumptions:
+
+<b>Assumptions</b>:
 Sensor readings are saved in a text or CSV file.
 The program periodically reads this file to process or visualize data.
 Useful for testing and simulation when no physical hardware is connected.
