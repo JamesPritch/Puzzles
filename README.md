@@ -10,10 +10,12 @@ Andrew and Barbara open boxes with random prizes in, one by row and one by colum
 <b>Task</b>: Develop a small software application to collect, store, and display real-time readings from a simulated sensor system.
 
 <b>Details</b>:
-Designed and implemented a module to generate or capture live data readings from a virtual sensor source.
-Build a logging component to store readings in a structured file format for later analysis.
-Create a visualization module to plot the data over time and highlight any anomalies or threshold events.
-Focus on clean code structure, modular design, and clear documentation to make the tool easy to extend to physical hardware inputs.
+<ul>
+ <li>Designed and implemented a module to generate or capture live data readings from a virtual sensor source.</li>
+ <li>Build a logging component to store readings in a structured file format for later analysis.</li>
+ <li>Create a visualization module to plot the data over time and highlight any anomalies or threshold events.</li>
+ <li>Focus on clean code structure, modular design, and clear documentation to make the tool easy to extend to physical hardware inputs.</li>
+</ul>
 
 <b>Skills demonstrated</b>:
 General-purpose programming and problem-solving
