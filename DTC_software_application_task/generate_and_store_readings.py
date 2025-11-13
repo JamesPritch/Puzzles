@@ -13,12 +13,12 @@ import numpy as np
 
 ## Variable definitions
 # Initial sensor output example (as given)
-sensor_output = np.array([[round(time.time())-5, 22.5, 45.2, 1013.2, 12],
-                          [round(time.time())-4, 22.6, 45.1, 1013.1, 14],
-                          [round(time.time())-3, 22.7, 45.3, 1013.0, 13],
-                          [round(time.time())-2, 22.8, 45.5, 1012.9, 16],
-                          [round(time.time())-1, 22.6, 45.4, 1012.8, 15]])
-
+init_time = round(time.time())
+sensor_output = np.array([[round(time.time()) - init_time+0, 22.5, 45.2, 1013.2, 12],
+                          [round(time.time()) - init_time+1, 22.6, 45.1, 1013.1, 14],
+                          [round(time.time()) - init_time+2, 22.7, 45.3, 1013.0, 13],
+                          [round(time.time()) - init_time+3, 22.8, 45.5, 1012.9, 16],
+                          [round(time.time()) - init_time+4, 22.6, 45.4, 1012.8, 15]])
 
 ## Generate readings
 

@@ -9,50 +9,47 @@ Created on Wed Nov 12 16:41:01 2025
 ## Imports
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 
-
-## Read file
-sensor_output = np.loadtxt("/Users/jpritch/Documents/Other/Puzzles/DTC_software_application_task/sensor_output.csv",
-				delimiter=",", dtype=float)
-
-
-## Extracting individual readings from sensor output
-# Time
-xpoints = sensor_output[:,0]
-# Temperature, Humidity, Pressure, Air Quality
-ypoints_temperature = sensor_output[:,1]
-ypoints_humidity = sensor_output[:,2]
-ypoints_pressure = sensor_output[:,3]
-ypoints_airQuality = sensor_output[:,4]
-
+## Variables
 # Graph Titles
-title_temperature = 'Temperature against Time'
-title_humidity = 'Humidity against Time'
-title_pressure = 'Pressure against time'
-title_airQuality = 'Air Quality against Time'
-
+titles = ['Temperature against Time', 'Humidity against Time', 
+         'Pressure against time', 'Air Quality against Time']
 # Axis labels
 xlabel = 'Time (seconds)'
-ylabel_temperature = 'Temperature (°C)'
-ylabel_humidity = 'Humidity (%)'
-ylabel_pressure = 'Pressure (hPa)'
-ylabel_airQuality = 'Air Quality (Index)'
+ylabels = ['Temperature (°C)', 'Humidity (%)', 
+          'Pressure (hPa)', 'Air Quality (Index)']
 
 
-## A function to graph
-def graph(x,y, title, xlab, ylab):
-    plt.figure(dpi=300)
-    plt.scatter(x, y, c='black', marker = '.')
-    plt.title(title)
-    plt.xlabel(xlab)
-    plt.ylabel(ylab)
-    plt.show()
+## Functions
+# Read file
+def read_file():
+    sensor_output = np.loadtxt("/Users/jpritch/Documents/Other/Puzzles/DTC_software_application_task/sensor_output.csv",
+    				delimiter=",", dtype=float)
+    return sensor_output
+
+# A graphing function
+def graph(sensor, titles, xlab, ylabs):
+    # Extracting individual readings from sensor output
+    # Time
+    x = sensor[:,0]
+    # Temperature, Humidity, Pressure, Air Quality
+    y = [sensor[:,1], sensor[:,2], sensor[:,3], sensor[:,4]]
+    # Loop to graph all four variables against time
+    for i in range(0,4):
+        # Change resolution of and label graph
+        plt.figure(dpi=300)
+        plt.title(titles[i])
+        plt.xlabel(xlab)
+        plt.ylabel(ylabs[i])
+        # Scatter plot variable
+        plt.scatter(x, y[i], c='black', marker = '.')
+        # Line of best fit
+        best_fit = np.poly1d(np.polyfit(x, y[i], 3))
+        xp = np.linspace(x[0], x[-1], 50)
+        plt.plot(xp, best_fit(xp), '--', c='red')
+        plt.show()
 
 
-
-
-graph(xpoints, ypoints_temperature, title_temperature, xlabel, ylabel_temperature)
-graph(xpoints, ypoints_humidity, title_humidity, xlabel, ylabel_humidity)
-graph(xpoints, ypoints_pressure, title_pressure, xlabel, ylabel_pressure)
-graph(xpoints, ypoints_airQuality, title_airQuality, xlabel, ylabel_airQuality)
+## Operations
+sensor_output = read_file()
+graph(sensor_output, titles, xlabel, ylabels)
