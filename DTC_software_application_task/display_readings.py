@@ -17,10 +17,42 @@ sensor_output = np.loadtxt("/Users/jpritch/Documents/Other/Puzzles/DTC_software_
 				delimiter=",", dtype=float)
 
 
-print(sensor_output[:,1])
-
+## Extracting individual readings from sensor output
+# Time
 xpoints = sensor_output[:,0]
-ypoints = sensor_output[:,4]
+# Temperature, Humidity, Pressure, Air Quality
+ypoints_temperature = sensor_output[:,1]
+ypoints_humidity = sensor_output[:,2]
+ypoints_pressure = sensor_output[:,3]
+ypoints_airQuality = sensor_output[:,4]
 
-plt.plot(xpoints, ypoints)
-plt.show()
+# Graph Titles
+title_temperature = 'Temperature against Time'
+title_humidity = 'Humidity against Time'
+title_pressure = 'Pressure against time'
+title_airQuality = 'Air Quality against Time'
+
+# Axis labels
+xlabel = 'Time (seconds)'
+ylabel_temperature = 'Temperature (°C)'
+ylabel_humidity = 'Humidity (%)'
+ylabel_pressure = 'Pressure (hPa)'
+ylabel_airQuality = 'Air Quality (Index)'
+
+
+## A function to graph
+def graph(x,y, title, xlab, ylab):
+    plt.figure(dpi=300)
+    plt.scatter(x, y, c='black', marker = '.')
+    plt.title(title)
+    plt.xlabel(xlab)
+    plt.ylabel(ylab)
+    plt.show()
+
+
+
+
+graph(xpoints, ypoints_temperature, title_temperature, xlabel, ylabel_temperature)
+graph(xpoints, ypoints_humidity, title_humidity, xlabel, ylabel_humidity)
+graph(xpoints, ypoints_pressure, title_pressure, xlabel, ylabel_pressure)
+graph(xpoints, ypoints_airQuality, title_airQuality, xlabel, ylabel_airQuality)
