@@ -7,6 +7,8 @@ Created on Wed Nov 12 16:41:01 2025
 """
 
 ## Imports
+import time
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -15,23 +17,27 @@ import matplotlib.pyplot as plt
 titles = ['Temperature against Time', 'Humidity against Time', 
          'Pressure against time', 'Air Quality against Time']
 # Axis labels
-xlabel = 'Time (seconds)'
+xlabel = 'Time (hours past midnight)'
 ylabels = ['Temperature (°C)', 'Humidity (%)', 
           'Pressure (hPa)', 'Air Quality (Index)']
+
+current_day = math.floor(time.time()/(24*60*60))
 
 
 ## Functions
 # Read file
 def read_file():
-    sensor_output = np.loadtxt("/Users/jpritch/Documents/Other/Puzzles/DTC_software_application_task/sensor_output.csv",
-    				delimiter=",", dtype=float)
+    sensor_output = np.loadtxt(("/Users/jpritch/Documents/Other/Puzzles/"
+                                "DTC_software_application_task/sensor_output_"
+                                +str(current_day)+".csv"),
+    			            	delimiter=",", dtype=float)
     return sensor_output
 
 # A graphing function
 def graph(sensor, titles, xlab, ylabs):
     # Extracting individual readings from sensor output
     # Time
-    x = sensor[:,0]
+    x = sensor[:,0]/(60*60)
     # Temperature, Humidity, Pressure, Air Quality
     y = [sensor[:,1], sensor[:,2], sensor[:,3], sensor[:,4]]
     # Loop to graph all four variables against time
