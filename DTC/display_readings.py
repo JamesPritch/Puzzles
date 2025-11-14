@@ -21,33 +21,34 @@ xlabel = 'Time (hours past midnight)'
 ylabels = ['Temperature (°C)', 'Humidity (%)', 
           'Pressure (hPa)', 'Air Quality (Index)']
 
-current_day = math.floor(time.time()/(24*60*60))-3
+current_day = math.floor(time.time()/(24*60*60))
 
 
 ## Functions
 # Read file
-def read_file():
-    sensor_output = np.loadtxt(('/Users/jpritch/Documents/Other/Puzzles/'
+def read_file(current_day):
+    sensor_outputs = np.loadtxt(('/Users/jpritch/Documents/Other/Puzzles/'
                                 'DTC//sensor_outputs/sensor_output_'
                                 +str(current_day)+'.csv'),
     			            	delimiter=',', dtype=float)
-    return sensor_output
+    return sensor_outputs
 
 # A graphing function
-def graph(sensor, titles, xlab, ylabs):
+def graph(sensor_outputs, titles, xlabel, ylabels):
     # Extracting individual readings from sensor output
     # Time
-    x = sensor[:,0]/(60*60)
+    x = sensor_outputs[:,0]/(60*60)
     # Temperature, Humidity, Pressure, Air Quality
-    y = [sensor[:,1], sensor[:,2], sensor[:,3], sensor[:,4]]
+    y = [sensor_outputs[:,1], sensor_outputs[:,2], 
+         sensor_outputs[:,3], sensor_outputs[:,4]]
     # Loop to graph all four variables against time
     for i in range(0,4):
         # Change resolution of and label graph
         plt.figure(dpi=300)
         plt.title(titles[i] + ' on ' + time.strftime("%d %B %Y", 
                      time.gmtime(current_day*24*60*60)))
-        plt.xlabel(xlab)
-        plt.ylabel(ylabs[i])
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabels[i])
         # Scatter plot variable
         plt.scatter(x, y[i], c='black', marker = '.')
         # Line of best fit
@@ -58,5 +59,5 @@ def graph(sensor, titles, xlab, ylabs):
 
 
 ## Operations
-sensor_output = read_file()
-graph(sensor_output, titles, xlabel, ylabels)
+sensor_outputs = read_file(current_day)
+graph(sensor_outputs, titles, xlabel, ylabels)
