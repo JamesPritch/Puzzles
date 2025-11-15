@@ -44,15 +44,15 @@ def graph(sensor_outputs, titles, xlabel, ylabels):
     # Loop to graph all four variables against time
     for i in range(0,4):
         # Change resolution of and label graph
-        plt.figure(dpi=300)
+        plt.figure(dpi=500)
         plt.title(titles[i] + ' on ' + time.strftime("%d %B %Y", 
                      time.gmtime(current_day*24*60*60)))
         plt.xlabel(xlabel)
         plt.ylabel(ylabels[i])
         # Scatter plot variable
-        plt.scatter(x, y[i], c='black', marker = '.')
+        plt.scatter(x, y[i], c='black', marker = '.', s = 2)
         # Line of best fit
-        best_fit = np.poly1d(np.polyfit(x, y[i], 3))
+        best_fit = np.poly1d(np.polyfit(x, y[i], 5))
         xp = np.linspace(x[0], x[-1], 50)
         plt.plot(xp, best_fit(xp), '--', c='red')
         plt.show()
