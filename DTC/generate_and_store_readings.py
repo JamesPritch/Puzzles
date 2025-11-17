@@ -13,7 +13,6 @@ import numpy as np
 
 
 ## Variable definitions
-current_day = math.floor(time.time()/(24*60*60))
 # T is the length of one cycle of readings, i.e. the number of seconds in a day
 T = 24*60*60
 
@@ -33,14 +32,14 @@ def generate_readings(sensor_outputs, t, T, i):
     return sensor_outputs
 
 def generate_temp(t, T):
-    # Equation for temperature is 22.5+10sin(2pi*t/60)
+    # Equation for temperature is 22.5+10sin(2pi*t/T)
     temp = 22.5 + 10*math.sin(2*math.pi*(t)/T) 
     # Add randomness from Normal distribution with mu=0, omega=1
     temp += float(np.random.normal(0, 1, 1))
     return round(temp, 1)
 
 def generate_humi(t, T):
-    # Equation for humidity is 45.2+10sin(pit*/60)
+    # Equation for humidity is 45.2+10sin(pit*/T)
     humi = 45.2 + 10*math.sin(math.pi*(t)/T) 
     # Add randomness from Normal distribution with mu=0, omega=0.5
     humi += float(np.random.normal(0, 0.5, 1))
@@ -51,7 +50,7 @@ def generate_pres(t, T, i):
         # Linearly drop by 50 hPa
         pres = 1013.2 - 50*(t)/(T/3)
     else:
-        # Equation for pressure is 963.2+e^(1.5ln(51)t)-1
+        # Equation for pressure is 963.2+e^(1.5ln(51)t/T)-1
         pres = 963.2 + math.exp((1.5*math.log(51, math.e))*(t-(T/3))/T)-1
     # Add randomness from Normal distribution with mu=0, omega=2
     pres += float(np.random.normal(0, 2, 1))
@@ -59,8 +58,8 @@ def generate_pres(t, T, i):
 
 def generate_airQ(t, T, i):
     if i/T < 2/3:
-        # Equation for air quality is 1013.2+(30/ln(43/3))ln(20t+1)
-        airQ = 12 + (30/math.log(43/3, math.e))*math.log((20*t/T+1), math.e)
+        # Equation for air quality is 12+(30/ln(43/3))ln(20(t+1)/T)
+        airQ = 12 + (30/math.log(43/3, math.e))*math.log((20*(t+1)/T), math.e)
     else:
         # Linearly return to initial air quality
         airQ = 42 - 30*(t-T*2/3)/(T/3)
@@ -79,8 +78,8 @@ def store_readings(sensor_outputs, current_day):
 
 
 ## Operations
-#while True: # This could be improved to break yearly
-for j in range(0,2):
+while True: # This could be improved to break yearly
+    current_day = math.floor(time.time()/(24*60*60))
     # Wait for the next whole second
     time.sleep(1.0 - (time.time()-math.floor(time.time())))
     # Initialise sensor_outputs and starttime

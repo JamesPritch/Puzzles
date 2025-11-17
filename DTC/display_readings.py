@@ -21,7 +21,7 @@ xlabel = 'Time (hours past midnight)'
 ylabels = ['Temperature (°C)', 'Humidity (%)', 
           'Pressure (hPa)', 'Air Quality (Index)']
 
-current_day = math.floor(time.time()/(24*60*60))
+current_day = math.floor(time.time()/(24*60*60))-1
 
 
 ## Functions
@@ -37,7 +37,7 @@ def read_file(current_day):
 def graph(sensor_outputs, titles, xlabel, ylabels):
     # Extracting individual readings from sensor output
     # Time
-    x = sensor_outputs[:,0]/(60*60)
+    t = sensor_outputs[:,0]/(60*60)
     # Temperature, Humidity, Pressure, Air Quality
     y = [sensor_outputs[:,1], sensor_outputs[:,2], 
          sensor_outputs[:,3], sensor_outputs[:,4]]
@@ -50,10 +50,10 @@ def graph(sensor_outputs, titles, xlabel, ylabels):
         plt.xlabel(xlabel)
         plt.ylabel(ylabels[i])
         # Scatter plot variable
-        plt.scatter(x, y[i], c='black', marker = '.', s = 2)
+        plt.scatter(t, y[i], c='black', marker = '.', s = 2)
         # Line of best fit
-        best_fit = np.poly1d(np.polyfit(x, y[i], 5))
-        xp = np.linspace(x[0], x[-1], 50)
+        best_fit = np.poly1d(np.polyfit(t, y[i], 14))
+        xp = np.linspace(t[0], t[-1], 50)
         plt.plot(xp, best_fit(xp), '--', c='red')
         plt.show()
 
