@@ -18,12 +18,12 @@
 
 \begin{document}
 \maketitle
-\section{The beginning}
+\section{The Beginning}
 I thought I may as well write a little about the code to ensure clarity, just in case the comments in the code are not sufficient. As is probably clear, I will be using informal language since it should be (I hope) more interesting to read. Or perhaps I should say less boring.
 
 I'll aim to make clear the structure of my code and why I structured it that way, as well as include some nice graphs, since why not.
 
-The coding process I went through was documented on GitHub: \url{https://github.com/JamesPritch/Puzzles/tree/main/DTC}
+The coding process I went through was documented on GitHub: \url{https://github.com/JamesPritch/Puzzles/tree/main/DTC}.
 
 
 
@@ -43,11 +43,11 @@ For the second file, I planned to have a function to read the \texttt{np.array} 
 
 
 
-\section{More detail}
+\section{More Detail}
 \subsection{Generation and Storing of Readings}
 The \texttt{np.array} for the sensor output is somewhat uninventively named \texttt{sensor\_outputs}. I should note the time value is the number of seconds that have passed since midnight that day - a nice monotonically increasing sequence.
 
-As I wrote the code to generate \texttt{sensor\_outputs} with the function \texttt{generate\_readings}, I outsourced the generation of each individual variable (temperature, humidity, pressure, and air quality) into four more functions (\texttt{generate\_temp}, \texttt{generate\_humi}, \texttt{generate\_pres}, and \texttt{generate\_airQ}) to make the code clearer and easier to test. It would also be possible to say more applicable to an example of plugging into a sensor if one imagines these four functions as four different readings/data streams/wires coming from some black box which is the sensor.
+As I wrote the code to generate \texttt{sensor\_outputs} with the function \texttt{generate\_readings}, I outsourced the generation of each individual variable (temperature, humidity, pressure, and air quality) into four more functions (\texttt{generate\_temp}, \texttt{generate\_humi}, \texttt{generate\_pres}, and \texttt{generate\_airQ}) to make the code clearer and easier to test. It would also be possible to say that this method is more applicable to an example of plugging into a sensor if one imagines these four functions as four different readings/data streams/wires coming from some black box which is the sensor.
 
 As for storage of readings, I wrote a function called \texttt{store\_readings}. What a font of ingenuity.
 
@@ -60,7 +60,7 @@ The algorithm for this file goes as follows:
   \item While the number of seconds that have passed since midnight is less than $24\cdot60\cdot60$, call \texttt{generate\_readings} every second.
   \item Store the readings to file by calling \texttt{store\_readings}.
 \end{enumerate}
-
+In my code, these instructions repeat forever in a loop, however, that's fairly unrealistic. Equally, it wouldn't be hard to set this loop to run for a finite set of days.
 
 
 \subsubsection{Equations of Readings}
@@ -68,7 +68,7 @@ Since I had free rein over what the simulated readings might look like, I decide
 \begin{equation} 
    y = \sin(2\pi t),
 \end{equation}
-where $y$ are temperature readings and $t$ is time. Ensuring I had an initial condition of $y=22.5$ (as given in the example sensor output), a variation of 20 Degrees from minima to maxima, and one period\footnote{The period used here is one day, so one increase and decrease per day.} was of the correct length $T$, I arrived at
+where $y$ are temperature readings and $t$ is time. Ensuring I had an initial condition of $y=22.5$ (as given in the example sensor output), a variation of 20 Degrees from minima to maxima, and one period\footnote{The period used here is one day, so one complete sine curve per day.} was of the correct length $T$, I arrived at
 \begin{equation} 
    y = 22.5+10\sin\left(\frac{2\pi t}{T}\right).
 \end{equation}
@@ -152,6 +152,10 @@ It all seems to work rather well.
   \item Highlighting points automatically that are a certain distance away from the mean.
   \item Backing up more regularly than daily to minimise data loss if something goes wrong.
 \end{itemize}
+
+
+\section{The End}
+Fin.
 
 
 \end{document}  
