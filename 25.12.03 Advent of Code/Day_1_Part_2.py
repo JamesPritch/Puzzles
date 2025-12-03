@@ -36,4 +36,4 @@ for i in range(len(lines)):
         
 
 #print(password)
-# 6059 too low, 6173 too high, 6157 wrong
+# 6166
