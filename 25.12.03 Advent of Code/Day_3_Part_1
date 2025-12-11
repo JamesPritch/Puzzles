@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Dec  9 17:10:14 2025
+
+@author: jpritch
+"""
+
+# Reading instructions from file
+with open('Day_3.txt') as f:
+    lines = f.readlines()
+lines[-1] = lines[-1]+' '
+
+length = len(lines[0])
+joltages = []
+value_0, value_1 = 0, 0
+
+
+for i in range(len(lines)):
+    for j in range(length-2):
+        if int(lines[i][j]) > value_0:
+            value_0 = int(lines[i][j])
+            index_1 = j
+    for k in range(index_1+1, length-1):
+        if int(lines[i][k]) > value_1:
+            value_1 = int(lines[i][k])
+            index_2 = k
+    joltages.append(int(lines[i][index_1] + lines[i][index_2]))
+    value_0, value_1 = 0, 0
+
+
+print(sum(joltages))
+# 17034
